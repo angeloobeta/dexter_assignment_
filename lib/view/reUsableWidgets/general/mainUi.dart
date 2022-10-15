@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 
 import '../../../model/imports/generalImport.dart';
 
-Widget mainUi(context,
+Widget mainUi(
     {required List<Widget> children,
-    required Function onTapFunction,
+    // required VoidCallback? onTapFunction(int),
     required bool allowBackButton,
     Color? color}) {
-  int selectedIndex = 0;
+  int selectedIndex = 1;
   return WillPopScope(
       onWillPop: () async {
         return allowBackButton;

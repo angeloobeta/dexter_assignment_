@@ -9,22 +9,17 @@ Widget screenUi(
     required bool allowBackButton,
     Color? color}) {
   return WillPopScope(
-      onWillPop: () async {
-        return allowBackButton;
-      },
-      child: SafeArea(
-        top: true,
-        bottom: false,
-        child: Scaffold(
-          body: Container(
-            color: color ?? Colors.grey,
-            width: double.infinity,
-            // height: MediaQuery.of(context).size.height * 0.8,
-            // color:
-            child: Stack(
-              children: children,
-            ),
-          ),
-        ),
-      ));
+    onWillPop: () async {
+      return allowBackButton;
+    },
+    child: Container(
+      color: color ?? Colors.grey,
+      // width: double.infinity,
+      // height: MediaQuery.of(context).size.height * 0.8,
+      // color:
+      child: Stack(
+        children: children,
+      ),
+    ),
+  );
 }
