@@ -9,3 +9,12 @@ class GetAllTasksEvent extends TaskEvent {
   // TODO: implement props
   List<Object?> get props => [];
 }
+
+class AddTaskEvent extends TaskEvent {
+  final TaskModel taskModel;
+
+  AddTaskEvent(this.taskModel);
+  @override
+  // TODO: implement props
+  List<Object?> get props => [];
+}

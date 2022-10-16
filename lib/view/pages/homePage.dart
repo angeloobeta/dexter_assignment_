@@ -33,7 +33,9 @@ class _HomePageState extends State<HomePage> {
       child: Scaffold(
         floatingActionButton: FloatingActionButton(
           backgroundColor: red,
-          onPressed: () => showMyDialog(context: context),
+          onPressed: () => showMyDialog(
+            context: context,
+          ),
           child: Icon(Icons.add),
         ),
         body: Container(

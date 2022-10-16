@@ -14,5 +14,4 @@ export 'package:line_icons/line_icons.dart';
 export 'package:line_icons/line_icons.dart';
 export 'package:path_provider/path_provider.dart';
 export 'package:shared_preferences/shared_preferences.dart';
-// export 'package:stacked/stacked.dart';
 export 'package:visibility_detector/visibility_detector.dart';

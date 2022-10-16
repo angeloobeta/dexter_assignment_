@@ -1,15 +1,21 @@
+import 'package:dexter_assignment/bloc/task_bloc.dart';
+import 'package:dexter_assignment/model/imports/generalImport.dart';
+import 'package:dexter_assignment/view/pages/homePage.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'SplashScreen.dart';
+import 'Repository/task_repository.dart';
 import 'model/utilities/routeGenerator.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(const MyApp());
+  runApp(BlocProvider(
+    create: (BuildContext context) => TaskBloc(repository: TaskRepository()),
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -31,7 +37,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.green,
       ),
       onGenerateRoute: RouteGenerator.generateRoute,
-      home: const SplashScreen(),
+      home: HomePage(),
     );
   }
 }
