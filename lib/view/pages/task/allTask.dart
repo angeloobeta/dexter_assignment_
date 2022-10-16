@@ -2,14 +2,14 @@ import 'package:dexter_assignment/model/imports/generalImport.dart';
 
 import '../../reUsableWidgets/general/screenUi.dart';
 
-class AllTodoTask extends StatefulWidget {
-  const AllTodoTask({Key? key}) : super(key: key);
+class AllTask extends StatefulWidget {
+  const AllTask({Key? key}) : super(key: key);
 
   @override
-  State<AllTodoTask> createState() => _AllTodoTaskState();
+  State<AllTask> createState() => _AllTaskState();
 }
 
-class _AllTodoTaskState extends State<AllTodoTask> {
+class _AllTaskState extends State<AllTask> {
   @override
   Widget build(BuildContext context) {
     return screenUi(

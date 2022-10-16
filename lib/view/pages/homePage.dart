@@ -1,7 +1,8 @@
 import 'package:dexter_assignment/model/imports/generalImport.dart';
-import 'package:dexter_assignment/view/pages/task/AllTodoTask.dart';
+import 'package:dexter_assignment/view/pages/task/allTask.dart';
 import 'package:dexter_assignment/view/pages/task/completedTask.dart';
 import 'package:dexter_assignment/view/pages/task/pendingTask.dart';
+import 'package:dexter_assignment/view/uiElements/add_todo.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -13,8 +14,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
   final List<Widget> _pages = [
-    const AllTodoTask(),
-    const AllTodoTask(),
+    const AllTask(),
     const PendingTask(),
     const CompletedTask(),
   ];
@@ -33,7 +33,7 @@ class _HomePageState extends State<HomePage> {
       child: Scaffold(
         floatingActionButton: FloatingActionButton(
           backgroundColor: red,
-          onPressed: () {},
+          onPressed: () => showMyDialog(context: context),
           child: Icon(Icons.add),
         ),
         body: Container(
@@ -76,15 +76,5 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
-
-    //   mainUi(
-    //   children: [
-    //     Center(
-    //       child: _pages.elementAt(_selectedIndex),
-    //     ),
-    //   ],
-    //   allowBackButton: false,
-    //   // onTapFunction: (){}
-    // );
   }
 }
