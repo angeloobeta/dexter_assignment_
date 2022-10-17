@@ -61,7 +61,7 @@ class _AllTaskState extends State<AllTask> {
                                 FontWeight.w700,
                                 ""),
                             GeneralTextDisplay(
-                                "This ${state.taskList[0].title}",
+                                "This ${state.taskList[1].title}",
                                 black,
                                 2,
                                 16,
@@ -78,11 +78,6 @@ class _AllTaskState extends State<AllTask> {
               ],
               allowBackButton: false,
             );
-
-            //   Center(
-            //   child: Text('Title ${state.taskList[0].title}'),
-            // );
-
           }
 
           return screenUi(
@@ -106,7 +101,6 @@ class _AllTaskState extends State<AllTask> {
               AdaptivePositioned(
                   Container(
                     height: MediaQuery.of(context).size.width * 0.2,
-                    color: white,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -115,7 +109,7 @@ class _AllTaskState extends State<AllTask> {
                       ],
                     ),
                   ),
-                  left: 25,
+                  left: 0,
                   top: 250),
             ],
             allowBackButton: false,

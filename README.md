@@ -5,7 +5,7 @@ A new Flutter project.
 ## Getting Started
 
 This project is a starting point for a Flutter application.
-<img src="/assets/images/Screenshot5.png" height="500em"/>&nbsp;
+<img src="/assets/images/Screenshot5.png" height="500em"/>
 <img src="/assets/images/Screenshot1.png" height="500em"/>&nbsp;
 <img src="/assets/images/Screenshot2.png" height="500em"/>&nbsp;
 <img src="/assets/images/Screenshot4.png" height="500em"/>&nbsp;
