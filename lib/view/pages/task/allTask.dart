@@ -1,4 +1,5 @@
 import 'package:dexter_assignment/bloc/task_bloc.dart';
+import 'package:dexter_assignment/model/homeModel.dart';
 import 'package:dexter_assignment/model/imports/generalImport.dart';
 import 'package:dexter_assignment/view/uiElements/edit_todo.dart';
 
@@ -14,6 +15,16 @@ class AllTask extends StatefulWidget {
 
 class _AllTaskState extends State<AllTask> {
   late TaskBloc taskBloc;
+  final SlidableController _slidableController;
+  final List<HomeModal> items = List.generate(
+    11,
+        (i) => HomeModal(
+      i,
+      _position(i),
+      _subtitle(i),
+      _avatarColor(i),
+    ),
+  )
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
