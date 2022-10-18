@@ -29,8 +29,11 @@ class TaskRepository {
     try {
       QuerySnapshot<Map<String, dynamic>> taskList =
           await FirestoreReference.taskRef.get();
+      print("Get all task was called");
+      print(taskList);
       return taskList.docs.map((task) => TaskModel.fromMap(task)).toList();
     } catch (e) {
+      print("Get all task fail to execute");
       throw Exception(e.toString());
     }
   }

@@ -1,5 +1,6 @@
 import 'package:dexter_assignment/model/imports/generalImport.dart';
 import 'package:dexter_assignment/view/pages/homePage.dart';
+import 'package:dexter_assignment/view/pages/task/allTask.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -17,6 +18,8 @@ class RouteGenerator {
         return materialPage(settings, const SignIn());
       case '/homePage':
         return materialPage(settings, const HomePage());
+      case '/allTask':
+        return materialPage(settings, const AllTask());
       default:
         // If there is no such named route in the switch statement, e.g. /third
         return _errorRoute();

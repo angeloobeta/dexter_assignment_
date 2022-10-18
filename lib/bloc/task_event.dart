@@ -18,3 +18,11 @@ class AddTaskEvent extends TaskEvent {
   // TODO: implement props
   List<Object?> get props => [];
 }
+
+// class UpdateTaskEvent extends TaskEvent {
+//   final TaskModel taskModel;
+//
+//   UpdateTaskEvent(this.taskModel);
+//   @override
+//   List<Object> get props => [];
+// }

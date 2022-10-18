@@ -1,5 +1,6 @@
 import 'package:dexter_assignment/bloc/task_bloc.dart';
 import 'package:dexter_assignment/model/imports/generalImport.dart';
+import 'package:dexter_assignment/view/uiElements/edit_todo.dart';
 
 import '../../../Repository/task_repository.dart';
 import '../../reUsableWidgets/general/screenUi.dart';
@@ -48,28 +49,35 @@ class _AllTaskState extends State<AllTask> {
                 Positioned(
                     child: SingleChildScrollView(
                       child: S(
-                        w: 375,
-                        h: 700,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            GeneralTextDisplay(
-                                "This ${state.taskList[0].title}",
-                                black,
-                                2,
-                                16,
-                                FontWeight.w700,
-                                ""),
-                            GeneralTextDisplay(
-                                "This ${state.taskList[1].title}",
-                                black,
-                                2,
-                                16,
-                                FontWeight.w700,
-                                "")
-                          ],
-                        ),
-                      ),
+                          w: 375,
+                          h: 700,
+                          child: ListView.builder(
+                              itemCount: state.taskList.length != null
+                                  ? state.taskList.length
+                                  : 0,
+                              itemBuilder: (BuildContext c, int index) {
+                                return GestureDetector(
+                                  onTap: () => editTask(context: context),
+                                  child: Column(
+                                    children: [
+                                      GeneralTextDisplay(
+                                          "${state.taskList[index].title == null ? "None" : state.taskList[index].title}",
+                                          black,
+                                          2,
+                                          16,
+                                          FontWeight.w700,
+                                          ""),
+                                      // GeneralTextDisplay(
+                                      //     "${state.taskList[index].description == null ? "None" : state.taskList[index].description}",
+                                      //     black,
+                                      //     2,
+                                      //     16,
+                                      //     FontWeight.w700,
+                                      //     "")
+                                    ],
+                                  ),
+                                );
+                              })),
                     ),
                     top: sS(context).cH(height: 100),
                     bottom: 15,

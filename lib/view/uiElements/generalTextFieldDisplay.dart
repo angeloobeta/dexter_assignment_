@@ -186,7 +186,7 @@ class FormattedTextFields extends StatelessWidget {
       height: sS(context).cH(height: height),
       width: sS(context).cW(width: width),
       decoration: BoxDecoration(
-        color: grey,
+        color: white,
         border: enabled == false
             ? Border.all(color: textFieldText, width: 1.0)
             : Border.all(color: transparent, width: 0.0),
@@ -224,6 +224,143 @@ class FormattedTextFields extends StatelessWidget {
                 fontFamily: "SFDisplay",
                 fontSize: sS(context).cH(height: hintFont),
                 color: white,
+                fontWeight: hintFontWeight),
+            hintStyle: TextStyle(
+                fontFamily: "SFDisplay",
+                fontSize: sS(context).cH(height: hintFont),
+                color: hintColor,
+                fontWeight: hintFontWeight),
+            hintText: textFieldHint,
+            contentPadding: contentPadding,
+            floatingLabelBehavior:
+                floatingBehaviour ?? FloatingLabelBehavior.auto,
+            enabledBorder: OutlineInputBorder(
+                borderSide: noBorder == true
+                    ? BorderSide.none
+                    : BorderSide(
+                        color: errorTextActive && focusNode!.hasFocus
+                            ? transparent
+                            : textFieldText,
+                        width: 1.0,
+                        style: noBorder == true
+                            ? BorderStyle.none
+                            : BorderStyle.solid),
+                borderRadius:
+                    BorderRadius.circular(sS(context).cW(width: borderRadius))),
+            focusedBorder: OutlineInputBorder(
+                borderSide: noBorder == true
+                    ? BorderSide.none
+                    : BorderSide(
+                        color: errorTextActive ? error : white,
+                        width: 1.0,
+                        style: BorderStyle.solid),
+                borderRadius: BorderRadius.circular(
+                    sS(context).cW(width: borderRadius)))),
+      ),
+    );
+  }
+}
+
+class FormattedTextField extends StatelessWidget {
+  final TextInputType keyInputType;
+  final TextEditingController textFieldController;
+  final int textFieldLineSpan;
+  final String textFieldHint, labelText;
+  final double height, width, textFont, hintFont, borderRadius;
+  final Color containerColor,
+      cursorColor,
+      hintColor,
+      outLineBorderColor,
+      focusBorderColor;
+  final bool? noBorder, autoFocus, obscureText;
+  final Function? onChangedFunction;
+  final List<TextInputFormatter> inputFormatters;
+  final bool errorTextActive;
+  final FocusNode? focusNode;
+  final Widget? prefixIcon, suffixIcon, suffix;
+  final Widget? prefix;
+  final FontWeight textFontWeight, hintFontWeight;
+  final EdgeInsets? contentPadding;
+  final FloatingLabelBehavior? floatingBehaviour;
+  final bool? enabled;
+
+  const FormattedTextField(
+      {required this.keyInputType,
+      required this.textFieldController,
+      required this.textFieldHint,
+      required this.textFieldLineSpan,
+      required this.height,
+      required this.width,
+      required this.containerColor,
+      required this.noBorder,
+      required this.autoFocus,
+      required this.inputFormatters,
+      required this.onChangedFunction,
+      required this.errorTextActive,
+      required this.focusNode,
+      required this.prefixIcon,
+      required this.prefix,
+      required this.suffixIcon,
+      required this.textFont,
+      required this.hintFont,
+      required this.borderRadius,
+      required this.cursorColor,
+      required this.hintColor,
+      required this.outLineBorderColor,
+      required this.focusBorderColor,
+      required this.textFontWeight,
+      required this.hintFontWeight,
+      required this.labelText,
+      this.contentPadding,
+      this.obscureText,
+      this.suffix,
+      this.floatingBehaviour,
+      this.enabled});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: sS(context).cH(height: height),
+      width: sS(context).cW(width: width),
+      decoration: BoxDecoration(
+        color: transparent,
+        border: enabled == false
+            ? Border.all(color: textFieldText, width: 1.0)
+            : Border.all(color: textFieldText, width: 0.0),
+        borderRadius: BorderRadius.circular(
+            MediaQuery.of(context).size.height * (borderRadius / 768)),
+      ),
+      alignment: Alignment.center,
+      child: TextFormField(
+        focusNode: focusNode ?? FocusNode(),
+        onChanged: (changed) {
+          onChangedFunction!();
+        }, // this function to validate the
+        // text field as the user types in it
+        autofocus: autoFocus!,
+        cursorColor: red,
+        enabled: enabled ?? true,
+        keyboardType: keyInputType,
+        obscureText: obscureText ?? false,
+        controller: textFieldController,
+        maxLines: textFieldLineSpan,
+        inputFormatters: inputFormatters,
+        style: TextStyle(
+          fontFamily: "SFDisplay",
+          color: red,
+          fontSize: textFont,
+          fontWeight: textFontWeight,
+        ),
+        decoration: InputDecoration(
+            prefixIcon: prefixIcon,
+            suffixIcon: suffixIcon,
+            suffix: suffix,
+            prefix: prefix,
+            labelText: labelText,
+            labelStyle: TextStyle(
+                fontFamily: "SFDisplay",
+                fontSize: sS(context).cH(height: hintFont),
+                color: red,
                 fontWeight: hintFontWeight),
             hintStyle: TextStyle(
                 fontFamily: "SFDisplay",
