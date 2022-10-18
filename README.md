@@ -12,6 +12,9 @@ This project is a starting point for a Flutter application.
 #### More Screenshots
 <img src="/assets/images/Screenshot4.png" height="500em"/>&nbsp;
 <img src="/assets/images/Screenshot5.png" height="500em"/>&nbsp;
+<img src="/assets/images/Screenshot6.png" height="500em"/>&nbsp;
+<img src="/assets/images/Screenshot7.png" height="500em"/>&nbsp;
+<img src="/assets/images/Screenshot8.png" height="500em"/>&nbsp;
 
 A few resources to get you started if this is your first Flutter project:
 
