@@ -17,7 +17,7 @@ class _CompletedTaskState extends State<CompletedTask> {
   Widget build(BuildContext context) {
     return BlocProvider(
         create: (context) =>
-        TaskBloc(repository: TaskRepository())..add(GetAllTasksEvent()),
+            TaskBloc(repository: TaskRepository())..add(GetAllTasksEvent()),
         child: BlocBuilder<TaskBloc, TaskState>(
           builder: (context, state) {
             if (state is TaskLoadingState) {
@@ -59,13 +59,13 @@ class _CompletedTaskState extends State<CompletedTask> {
                                       children: [
                                         if (state.taskList[index].status ==
                                             "completed")
-                                          GeneralTextDisplay(
-                                              "${state.taskList[index].title}",
-                                              black,
-                                              2,
-                                              16,
-                                              FontWeight.w700,
-                                              "")
+                                          SlidableWidget(context,
+                                              title:
+                                                  "${state.taskList[index].title == null ? "None" : state.taskList[index].title}",
+                                              description:
+                                                  "${state.taskList[index].description == null ? "None" : state.taskList[index].description}",
+                                              status:
+                                                  "${state.taskList[index].status == null ? "None" : state.taskList[index].status}"),
 
                                         // GeneralTextDisplay(
                                         //     "${state.taskList[index].description == null ? "None" : state.taskList[index].description}",

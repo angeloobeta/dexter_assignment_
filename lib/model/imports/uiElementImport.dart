@@ -8,4 +8,5 @@ export 'package:dexter_assignment/view/uiElements/generalTextFieldDisplay.dart';
 export 'package:dexter_assignment/view/uiElements/gradientText.dart';
 export 'package:dexter_assignment/view/uiElements/screenSizing.dart';
 export 'package:dexter_assignment/view/uiElements/sizedBox.dart';
+export 'package:dexter_assignment/view/uiElements/slideableWidget.dart';
 // export 'package:dexter_assignment/view/uiElements/dropDownButton.dart';

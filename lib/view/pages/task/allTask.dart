@@ -61,25 +61,13 @@ class _AllTaskState extends State<AllTask> {
                                   onTap: () => editTask(context: context),
                                   child: Column(
                                     children: [
-                                      GeneralTextDisplay(
-                                          "${state.taskList[index].title == null ? "None" : state.taskList[index].title}",
-                                          black,
-                                          2,
-                                          16,
-                                          FontWeight.w700,
-                                          ""),
                                       SlidableWidget(context,
                                           title:
                                               "${state.taskList[index].title == null ? "None" : state.taskList[index].title}",
                                           description:
-                                              "${state.taskList[index].description == null ? "None" : state.taskList[index].description}"),
-                                      // GeneralTextDisplay(
-                                      //     "${state.taskList[index].description == null ? "None" : state.taskList[index].description}",
-                                      //     black,
-                                      //     2,
-                                      //     16,
-                                      //     FontWeight.w700,
-                                      //     "")
+                                              "${state.taskList[index].description == null ? "None" : state.taskList[index].description}",
+                                          status:
+                                              "${state.taskList[index].status == null ? "None" : state.taskList[index].status}"),
                                     ],
                                   ),
                                 );

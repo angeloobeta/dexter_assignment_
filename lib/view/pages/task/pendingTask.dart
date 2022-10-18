@@ -60,13 +60,13 @@ class _PendingTaskState extends State<PendingTask> {
                                       children: [
                                         if (state.taskList[index].status ==
                                             "pending")
-                                          GeneralTextDisplay(
-                                              "${state.taskList[index].title}",
-                                              black,
-                                              2,
-                                              16,
-                                              FontWeight.w700,
-                                              "")
+                                          SlidableWidget(context,
+                                              title:
+                                                  "${state.taskList[index].title == null ? "None" : state.taskList[index].title}",
+                                              description:
+                                                  "${state.taskList[index].description == null ? "None" : state.taskList[index].description}",
+                                              status:
+                                                  "${state.taskList[index].status == null ? "None" : state.taskList[index].status}"),
 
                                         // GeneralTextDisplay(
                                         //     "${state.taskList[index].description == null ? "None" : state.taskList[index].description}",

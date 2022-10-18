@@ -14,8 +14,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  SlidableController? _slidableController;
-
   static Color? _avatarColor(int index) {
     switch (index % 4) {
       case 0:
