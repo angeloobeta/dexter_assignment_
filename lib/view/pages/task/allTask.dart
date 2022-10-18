@@ -1,10 +1,10 @@
 import 'package:dexter_assignment/bloc/task_bloc.dart';
-import 'package:dexter_assignment/model/homeModel.dart';
 import 'package:dexter_assignment/model/imports/generalImport.dart';
 import 'package:dexter_assignment/view/uiElements/edit_todo.dart';
 
 import '../../../Repository/task_repository.dart';
 import '../../reUsableWidgets/general/screenUi.dart';
+import '../../uiElements/slideableWidget.dart';
 
 class AllTask extends StatefulWidget {
   const AllTask({Key? key}) : super(key: key);
@@ -15,16 +15,6 @@ class AllTask extends StatefulWidget {
 
 class _AllTaskState extends State<AllTask> {
   late TaskBloc taskBloc;
-  final SlidableController _slidableController;
-  final List<HomeModal> items = List.generate(
-    11,
-        (i) => HomeModal(
-      i,
-      _position(i),
-      _subtitle(i),
-      _avatarColor(i),
-    ),
-  )
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -78,6 +68,11 @@ class _AllTaskState extends State<AllTask> {
                                           16,
                                           FontWeight.w700,
                                           ""),
+                                      SlidableWidget(context,
+                                          title:
+                                              "${state.taskList[index].title == null ? "None" : state.taskList[index].title}",
+                                          description:
+                                              "${state.taskList[index].description == null ? "None" : state.taskList[index].description}"),
                                       // GeneralTextDisplay(
                                       //     "${state.taskList[index].description == null ? "None" : state.taskList[index].description}",
                                       //     black,
