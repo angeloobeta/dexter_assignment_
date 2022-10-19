@@ -1,11 +1,13 @@
 // ignore: must_be_immutable
+import 'package:dexter_assignment/Repository/task_repository.dart';
 import 'package:dexter_assignment/bloc/task_bloc.dart';
 
-import '../../Repository/task_repository.dart';
 import '../../model/imports/generalImport.dart';
 import '../../model/task_model.dart';
 
-Future<void> editTask(BuildContext context, TaskModel todoList) async {
+Future<void> addTaskDialog({
+  required context,
+}) async {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController titleController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
@@ -20,7 +22,9 @@ Future<void> editTask(BuildContext context, TaskModel todoList) async {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             GeneralTextDisplay(
-                'Edit your Task ', black, 1, 23, FontWeight.w900, "add",
+                'Add a task to ', black, 1, 23, FontWeight.w900, "add",
+                textAlign: TextAlign.center),
+            GeneralTextDisplay('dexter', red!, 1, 23, FontWeight.w900, "add",
                 textAlign: TextAlign.center),
           ],
         ),
@@ -86,19 +90,16 @@ Future<void> editTask(BuildContext context, TaskModel todoList) async {
         ),
         actions: [
           TextButton(
-              child: Text('Update Task',
-                  style: TextStyle(color: red, fontSize: 20)),
+              child: Text('Add', style: TextStyle(color: red, fontSize: 20)),
               onPressed: () {
                 TaskBloc taskBloc = BlocProvider.of<TaskBloc>(context);
-                taskBloc.add(UpdateTaskEvent(
-                    TaskModel(
-                        createdAt: DateTime.now(),
-                        title: titleController.text,
-                        description: descriptionController.text,
-                        status: 'completed',
-                        // deadline: DateTime.now(),
-                        createdBy: 'userId'),
-                    todoList.id!));
+                taskBloc.add(AddTaskEvent(TaskModel(
+                    createdAt: DateTime.now(),
+                    title: titleController.text,
+                    description: descriptionController.text,
+                    status: 'completed',
+                    // deadline: DateTime.now(),
+                    createdBy: 'userId')));
                 Navigator.pushReplacementNamed(context, '/homePage');
                 TaskBloc(repository: TaskRepository())..add(GetAllTasksEvent());
               }),

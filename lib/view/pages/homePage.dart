@@ -2,7 +2,7 @@ import 'package:dexter_assignment/model/imports/generalImport.dart';
 import 'package:dexter_assignment/view/pages/task/allTask.dart';
 import 'package:dexter_assignment/view/pages/task/completedTask.dart';
 import 'package:dexter_assignment/view/pages/task/pendingTask.dart';
-import 'package:dexter_assignment/view/uiElements/add_todo.dart';
+import 'package:dexter_assignment/view/uiElements/addTaskDialog.dart';
 import 'package:dexter_assignment/view/uiElements/bottomNavigationBar.dart';
 
 class HomePage extends StatefulWidget {
@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
       child: Scaffold(
           floatingActionButton: FloatingActionButton(
             backgroundColor: red,
-            onPressed: () => showMyDialog(
+            onPressed: () => addTaskDialog(
               context: context,
             ),
             child: Icon(Icons.add),

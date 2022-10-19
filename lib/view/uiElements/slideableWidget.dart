@@ -3,7 +3,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 
 import '../../bloc/task_bloc.dart';
 import '../../model/task_model.dart';
-import 'edit_todo.dart';
+import 'editTaskDialog.dart';
 
 Widget SlidableWidget(
   BuildContext context,

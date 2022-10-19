@@ -14,11 +14,10 @@ class TaskRepository {
     }
   }
 
-  Future<void> updateTask(String taskId) async {
+  Future<void> updateTask(TaskModel task, String taskId) async {
     try {
-      await FirestoreReference.taskRef
-          .doc(taskId)
-          .update({'pending': 'completed'});
+      await FirestoreReference.taskRef.doc(taskId).update(task.toMap());
+      // .update({'pending': 'completed'});
       Utility.showToast('Task updated');
     } catch (e) {
       throw Exception(e.toString());
@@ -57,7 +56,7 @@ class TaskRepository {
 // delete the document
       await FirestoreReference.taskRef.doc(id).delete();
       print("Task was deleted");
-      Utility.showToast('Task saved deleted');
+      Utility.showToast('Task deleted successfully');
     } catch (e) {
       print("Task wasn't deleted");
       throw Exception(e.toString());

@@ -1,13 +1,11 @@
 // ignore: must_be_immutable
-import 'package:dexter_assignment/Repository/task_repository.dart';
 import 'package:dexter_assignment/bloc/task_bloc.dart';
 
+import '../../Repository/task_repository.dart';
 import '../../model/imports/generalImport.dart';
 import '../../model/task_model.dart';
 
-Future<void> showMyDialog({
-  required context,
-}) async {
+Future<void> editTask(BuildContext context, TaskModel todoList) async {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController titleController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
@@ -22,9 +20,7 @@ Future<void> showMyDialog({
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             GeneralTextDisplay(
-                'Add a task to ', black, 1, 23, FontWeight.w900, "add",
-                textAlign: TextAlign.center),
-            GeneralTextDisplay('dexter', red!, 1, 23, FontWeight.w900, "add",
+                'Edit your Task ', black, 1, 23, FontWeight.w900, "add",
                 textAlign: TextAlign.center),
           ],
         ),
@@ -45,8 +41,8 @@ Future<void> showMyDialog({
                     borderColor: white,
                     textInputType: TextInputType.text,
                     controller: titleController,
-                    hint: "Please Enter your task here",
-                    labelText: 'Enter your task here',
+                    hint: "Update task details here",
+                    labelText: 'Update your task details',
                     onChanged: () {},
                     inputFormatter: [],
                     prefix: null,
@@ -75,7 +71,7 @@ Future<void> showMyDialog({
                           maxLength: 500,
                           decoration: InputDecoration(
                               focusColor: red,
-                              hintText: "Describe your task",
+                              hintText: "Update your task description",
                               hintStyle: TextStyle(color: red),
                               border: OutlineInputBorder(
                                   borderSide: BorderSide.none)),
@@ -90,16 +86,20 @@ Future<void> showMyDialog({
         ),
         actions: [
           TextButton(
-              child: Text('Add', style: TextStyle(color: red, fontSize: 20)),
+              child: Text('Update Task',
+                  style: TextStyle(color: red, fontSize: 20)),
               onPressed: () {
                 TaskBloc taskBloc = BlocProvider.of<TaskBloc>(context);
-                taskBloc.add(AddTaskEvent(TaskModel(
-                    createdAt: DateTime.now(),
-                    title: titleController.text,
-                    description: descriptionController.text,
-                    status: 'completed',
-                    // deadline: DateTime.now(),
-                    createdBy: 'userId')));
+                taskBloc.add(UpdateTaskEvent(
+                    TaskModel(
+                        createdAt: DateTime.now(),
+                        title: titleController.text,
+                        description: descriptionController.text,
+                        status: 'completed',
+                        // deadline: DateTime.now(),
+                        createdBy: 'userId'),
+                    todoList.id!));
+                print("Task was update");
                 Navigator.pushReplacementNamed(context, '/homePage');
                 TaskBloc(repository: TaskRepository())..add(GetAllTasksEvent());
               }),

@@ -44,7 +44,7 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
       UpdateTaskEvent event, Emitter<TaskState> emit) async {
     emit(TaskLoadingState());
     try {
-      await repository!.updateTask(event.id);
+      await repository!.updateTask(event.todoModel, event.id);
     } catch (e) {
       emit(TaskErrorState(e.toString()));
     }
