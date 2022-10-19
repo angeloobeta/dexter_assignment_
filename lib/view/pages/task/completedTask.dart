@@ -67,14 +67,6 @@ class _CompletedTaskState extends State<CompletedTask> {
                                                   "${state.taskList[index].description == null ? "None" : state.taskList[index].description}",
                                               status:
                                                   "${state.taskList[index].status == null ? "None" : state.taskList[index].status}"),
-
-                                        // GeneralTextDisplay(
-                                        //     "${state.taskList[index].description == null ? "None" : state.taskList[index].description}",
-                                        //     black,
-                                        //     2,
-                                        //     16,
-                                        //     FontWeight.w700,
-                                        //     "")
                                       ],
                                     ),
                                   );
