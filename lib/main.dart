@@ -37,7 +37,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.green,
       ),
       onGenerateRoute: RouteGenerator.generateRoute,
-      home: HomePage(),
+      home:
+          // SplashScreen(),
+
+          HomePage(),
     );
   }
 }
