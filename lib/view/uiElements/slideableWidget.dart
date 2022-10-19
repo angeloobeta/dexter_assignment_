@@ -3,6 +3,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 
 import '../../bloc/task_bloc.dart';
 import '../../model/task_model.dart';
+import 'edit_todo.dart';
 
 Widget SlidableWidget(
   BuildContext context,
@@ -45,8 +46,7 @@ Widget SlidableWidget(
       motion: ScrollMotion(),
       children: [
         SlidableAction(
-          flex: 2,
-          onPressed: null,
+          onPressed: (context) => editTask(context, todoList),
           backgroundColor: Color(0xFF7BC043),
           foregroundColor: Colors.white,
           icon: Icons.edit,

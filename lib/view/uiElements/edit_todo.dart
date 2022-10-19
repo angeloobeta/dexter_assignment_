@@ -5,13 +5,11 @@ import '../../Repository/task_repository.dart';
 import '../../model/imports/generalImport.dart';
 import '../../model/task_model.dart';
 
-Future<void> editTask(BuildContext context) async {
+Future<void> editTask(BuildContext context, TaskModel todoList) async {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController titleController = TextEditingController();
-  final TextEditingController endedTaskAtController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
   final FocusNode titleNode = FocusNode();
-  final FocusNode endedTaskNode = FocusNode();
   return showDialog(
     context: context,
     barrierDismissible: false, // user must tap button!
@@ -22,9 +20,7 @@ Future<void> editTask(BuildContext context) async {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             GeneralTextDisplay(
-                'Add a task to ', black, 1, 23, FontWeight.w900, "add",
-                textAlign: TextAlign.center),
-            GeneralTextDisplay('dexter', red!, 1, 23, FontWeight.w900, "add",
+                'Edit your Task ', black, 1, 23, FontWeight.w900, "add",
                 textAlign: TextAlign.center),
           ],
         ),
@@ -90,19 +86,21 @@ Future<void> editTask(BuildContext context) async {
         ),
         actions: [
           TextButton(
-              child: Text('Add', style: TextStyle(color: red, fontSize: 20)),
+              child: Text('Update Task',
+                  style: TextStyle(color: red, fontSize: 20)),
               onPressed: () {
                 TaskBloc taskBloc = BlocProvider.of<TaskBloc>(context);
-                taskBloc.add(AddTaskEvent(TaskModel(
-                    createdAt: DateTime.now(),
-                    title: titleController.text,
-                    description: descriptionController.text,
-                    status: 'pending',
-                    // deadline: DateTime.now(),
-                    createdBy: 'userId')));
+                taskBloc.add(UpdateTaskEvent(
+                    TaskModel(
+                        createdAt: DateTime.now(),
+                        title: titleController.text,
+                        description: descriptionController.text,
+                        status: 'completed',
+                        // deadline: DateTime.now(),
+                        createdBy: 'userId'),
+                    todoList.id!));
+                Navigator.pushReplacementNamed(context, '/homePage');
                 TaskBloc(repository: TaskRepository())..add(GetAllTasksEvent());
-                Navigator.pushReplacementNamed(context, '/allTask');
-                Navigator.of(context).pop();
               }),
           TextButton(
               child: Text('Cancel',
