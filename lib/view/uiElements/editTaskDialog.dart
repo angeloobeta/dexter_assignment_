@@ -1,7 +1,6 @@
 // ignore: must_be_immutable
 import 'package:dexter_assignment/bloc/task_bloc.dart';
 
-import '../../Repository/task_repository.dart';
 import '../../model/imports/generalImport.dart';
 import '../../model/task_model.dart';
 
@@ -101,7 +100,6 @@ Future<void> editTask(BuildContext context, TaskModel todoList) async {
                     todoList.id!));
                 print("Task was update");
                 Navigator.pushReplacementNamed(context, '/homePage');
-                TaskBloc(repository: TaskRepository())..add(GetAllTasksEvent());
               }),
           TextButton(
               child: Text('Cancel',

@@ -4,6 +4,7 @@ import 'package:dexter_assignment/model/imports/generalImport.dart';
 import '../../../Repository/task_repository.dart';
 import '../../../model/task_model.dart';
 import '../../reUsableWidgets/general/screenUi.dart';
+import '../../uiElements/showTaskDialog.dart';
 import '../../uiElements/slideableWidget.dart';
 
 class AllTask extends StatefulWidget {
@@ -59,7 +60,9 @@ class _AllTaskState extends State<AllTask> {
                               itemBuilder: (BuildContext c, int index) {
                                 TaskModel todo = state.taskList[index];
                                 return GestureDetector(
-                                  onTap: () {},
+                                  onTap: () async {
+                                    await showTaskDialog(context, todo);
+                                  },
                                   child: Column(
                                     children: [
                                       SlidableWidget(context, todo,
