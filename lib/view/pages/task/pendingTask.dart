@@ -1,6 +1,7 @@
 import 'package:dexter_assignment/Repository/task_repository.dart';
 import 'package:dexter_assignment/bloc/task_bloc.dart';
 import 'package:dexter_assignment/model/imports/generalImport.dart';
+import 'package:dexter_assignment/view/uiElements/showTaskDialog.dart';
 
 import '../../../model/task_model.dart';
 import '../../reUsableWidgets/general/screenUi.dart';
@@ -56,7 +57,9 @@ class _PendingTaskState extends State<PendingTask> {
                                 itemBuilder: (BuildContext c, int index) {
                                   TaskModel todo = state.taskList[index];
                                   return GestureDetector(
-                                    onTap: () {},
+                                    onTap: () async {
+                                      await showTaskDialog(context, todo);
+                                    },
                                     child: Column(
                                       children: [
                                         if (state.taskList[index].status ==
