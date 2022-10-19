@@ -1,7 +1,7 @@
 // ignore: must_be_immutable
+import 'package:dexter_assignment/Repository/task_repository.dart';
 import 'package:dexter_assignment/bloc/task_bloc.dart';
 
-import '../../Repository/task_repository.dart';
 import '../../model/imports/generalImport.dart';
 import '../../model/task_model.dart';
 
@@ -97,12 +97,11 @@ Future<void> showMyDialog({
                     createdAt: DateTime.now(),
                     title: titleController.text,
                     description: descriptionController.text,
-                    status: 'pending',
+                    status: 'completed',
                     // deadline: DateTime.now(),
                     createdBy: 'userId')));
+                Navigator.pushReplacementNamed(context, '/homePage');
                 TaskBloc(repository: TaskRepository())..add(GetAllTasksEvent());
-                Navigator.pushReplacementNamed(context, '/allTask');
-                Navigator.of(context).pop();
               }),
           TextButton(
               child: Text('Cancel',

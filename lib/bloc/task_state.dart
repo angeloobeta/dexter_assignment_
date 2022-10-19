@@ -11,7 +11,6 @@ class TaskInitial extends TaskState {
 
 class TaskLoadingState extends TaskState {
   @override
-  // TODO: implement props
   List<Object?> get props => [];
 }
 
@@ -20,7 +19,6 @@ class TaskLoadedState extends TaskState {
 
   TaskLoadedState(this.taskList);
   @override
-  // TODO: implement props
   List<Object?> get props => [];
 }
 
@@ -29,6 +27,10 @@ class TaskErrorState extends TaskState {
 
   TaskErrorState(this.errorMessage);
   @override
-  // TODO: implement props
+  List<Object?> get props => [];
+}
+
+class TaskAddedState extends TaskState {
+  @override
   List<Object?> get props => [];
 }

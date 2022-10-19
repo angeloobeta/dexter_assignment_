@@ -5,9 +5,7 @@ import '../../Repository/task_repository.dart';
 import '../../model/imports/generalImport.dart';
 import '../../model/task_model.dart';
 
-Future<void> editTask({
-  required context,
-}) async {
+Future<void> editTask(BuildContext context) async {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController titleController = TextEditingController();
   final TextEditingController endedTaskAtController = TextEditingController();

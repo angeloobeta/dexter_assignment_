@@ -6,7 +6,6 @@ abstract class TaskEvent extends Equatable {
 
 class GetAllTasksEvent extends TaskEvent {
   @override
-  // TODO: implement props
   List<Object?> get props => [];
 }
 
@@ -15,14 +14,25 @@ class AddTaskEvent extends TaskEvent {
 
   AddTaskEvent(this.taskModel);
   @override
-  // TODO: implement props
   List<Object?> get props => [];
 }
 
-// class UpdateTaskEvent extends TaskEvent {
-//   final TaskModel taskModel;
-//
-//   UpdateTaskEvent(this.taskModel);
-//   @override
-//   List<Object> get props => [];
-// }
+class UpdateTaskEvent extends TaskEvent {
+  final TaskModel todoModel;
+  final String id;
+
+  UpdateTaskEvent(this.todoModel, this.id);
+
+  @override
+  List<Object?> get props => [];
+}
+
+class DeleteTaskEvent extends TaskEvent {
+  final String id;
+  final TaskModel todoModel;
+
+  DeleteTaskEvent(this.id, this.todoModel);
+
+  @override
+  List<Object?> get props => [];
+}

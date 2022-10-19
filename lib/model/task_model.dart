@@ -1,6 +1,7 @@
 import 'package:dexter_assignment/model/imports/generalImport.dart';
 
 class TaskModel {
+  String? id;
   String? title;
   bool? isCompleted;
   bool? isPending;
@@ -42,6 +43,7 @@ class TaskModel {
 
   TaskModel.fromMap(DocumentSnapshot<Map<String, dynamic>> task)
       : title = task.data()!['title'],
+        id = task.id,
         isCompleted = task.data()!['isCompleted'],
         isPending = task.data()!['isPending'],
         shift = task.data()!['shift'],

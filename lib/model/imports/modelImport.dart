@@ -17,4 +17,4 @@
 // export 'package:monietree_app/model/models/transactionPin/updatePinModel.dart';
 // export 'package:monietree_app/model/models/transactionPin/verifyResetPinOtpModel.dart';
 // export 'package:monietree_app/model/service/authentication/resendCodeService.dart';
-export 'package:dexter_assignment/model/TodoTaskModel.dart';
+export 'package:dexter_assignment/model/toBeDeleted/TodoTaskModel.dart';

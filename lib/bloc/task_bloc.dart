@@ -15,6 +15,8 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
   TaskBloc({this.repository}) : super(TaskInitial()) {
     on<GetAllTasksEvent>(_mapGetAllTasksEventToState);
     on<AddTaskEvent>(_mapAddTaskEvent);
+    on<UpdateTaskEvent>(_mapUpdateTaskEventToState);
+    on<DeleteTaskEvent>(_mapDeleteTaskEventToState);
   }
 
   FutureOr<void> _mapGetAllTasksEventToState(
@@ -33,6 +35,26 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
     emit(TaskLoadingState());
     try {
       await repository!.saveTask(event.taskModel);
+    } catch (e) {
+      emit(TaskErrorState(e.toString()));
+    }
+  }
+
+  FutureOr<void> _mapUpdateTaskEventToState(
+      UpdateTaskEvent event, Emitter<TaskState> emit) async {
+    emit(TaskLoadingState());
+    try {
+      await repository!.updateTask(event.id);
+    } catch (e) {
+      emit(TaskErrorState(e.toString()));
+    }
+  }
+
+  FutureOr<void> _mapDeleteTaskEventToState(
+      DeleteTaskEvent event, Emitter<TaskState> emit) async {
+    emit(TaskLoadingState());
+    try {
+      await repository!.deleteTask(event.todoModel, event.id);
     } catch (e) {
       emit(TaskErrorState(e.toString()));
     }

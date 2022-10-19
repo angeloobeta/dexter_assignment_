@@ -1,10 +1,16 @@
 import 'package:dexter_assignment/model/imports/generalImport.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
-Widget SlidableWidget(BuildContext context,
-    {required String? title,
-    required String? description,
-    required String? status}) {
+import '../../bloc/task_bloc.dart';
+import '../../model/task_model.dart';
+
+Widget SlidableWidget(
+  BuildContext context,
+  TaskModel todoList, {
+  required String? title,
+  required String? description,
+  required String? status,
+}) {
   return Slidable(
 // Specify a key if the Slidable is dismissible.
     key: const ValueKey(0),
@@ -13,14 +19,19 @@ Widget SlidableWidget(BuildContext context,
 // A motion is a widget used to control how the pane animates.
       motion: const ScrollMotion(),
 
-// A pane can dismiss the Slidable.
       dismissible: null,
 
 // All actions are defined in the children parameter.
       children: [
 // A SlidableAction can have an icon and/or a label.
         SlidableAction(
-          onPressed: null,
+          onPressed: (context) async {
+            TaskBloc taskBloc = BlocProvider.of<TaskBloc>(context);
+            taskBloc.add(DeleteTaskEvent(todoList.id!, todoList));
+            Navigator.pushReplacementNamed(context, '/homePage');
+            print(todoList.id);
+            // TaskBloc(repository: TaskRepository())..add(GetAllTasksEvent());
+          },
           backgroundColor: red!,
           foregroundColor: Colors.white,
           icon: Icons.delete,
@@ -43,15 +54,6 @@ Widget SlidableWidget(BuildContext context,
         )
       ],
     ),
-
-// The child of the Slidable is what the user sees when the
-// component is not dragged.
-//     child: GeneralTextDisplay(title!,
-//         black,
-//         2,
-//         16,
-//         FontWeight.w700,
-//         "")
     child: ListTile(
       title: Text(title!),
       leading: CircleAvatar(
@@ -63,34 +65,5 @@ Widget SlidableWidget(BuildContext context,
       subtitle: Text(description!),
       trailing: Text(status!),
     ),
-//     child: Container(
-//       color: transparent,
-//       height: 90.0,
-//       width: 90.0,
-//       child: Row(
-//         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//         // mainAxisSize: MainAxisSize.max,
-//         children: [
-//           Expanded(
-//             child: CircleAvatar(
-//               backgroundColor: textFieldText,
-//               child: Text(title!.substring(0, 2)),
-//               foregroundColor: red!,
-//             ),
-//           ),
-//           Expanded(
-//             child: Text(
-//               description!,
-//               style: TextStyle(color: red!),
-//             ),
-//           ),
-//         ],
-//       ),
-//     ),
-    // child: ListTile(
-    //     title: Text(
-    //   title!,
-    //   style: TextStyle(color: black),
-    // )),
   );
 }

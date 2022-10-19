@@ -1,8 +1,8 @@
 import 'package:dexter_assignment/Repository/task_repository.dart';
 import 'package:dexter_assignment/bloc/task_bloc.dart';
 import 'package:dexter_assignment/model/imports/generalImport.dart';
-import 'package:dexter_assignment/view/uiElements/edit_todo.dart';
 
+import '../../../model/task_model.dart';
 import '../../reUsableWidgets/general/screenUi.dart';
 
 class CompletedTask extends StatefulWidget {
@@ -53,13 +53,14 @@ class _CompletedTaskState extends State<CompletedTask> {
                                     ? state.taskList.length
                                     : 0,
                                 itemBuilder: (BuildContext c, int index) {
+                                  TaskModel todo = state.taskList[index];
                                   return GestureDetector(
-                                    onTap: () => editTask(context: context),
+                                    onTap: () {},
                                     child: Column(
                                       children: [
                                         if (state.taskList[index].status ==
                                             "completed")
-                                          SlidableWidget(context,
+                                          SlidableWidget(context, todo,
                                               title:
                                                   "${state.taskList[index].title == null ? "None" : state.taskList[index].title}",
                                               description:

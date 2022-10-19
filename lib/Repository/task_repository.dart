@@ -29,8 +29,10 @@ class TaskRepository {
     try {
       QuerySnapshot<Map<String, dynamic>> taskList =
           await FirestoreReference.taskRef.get();
-      print("Get all task was called");
-      print(taskList);
+      print("");
+      print("This fire store data");
+      print("${FirestoreReference.taskRef.get()}");
+      print("");
       return taskList.docs.map((task) => TaskModel.fromMap(task)).toList();
     } catch (e) {
       print("Get all task fail to execute");
@@ -46,6 +48,18 @@ class TaskRepository {
           .get();
       return taskList.docs.map((task) => TaskModel.fromMap(task)).toList();
     } catch (e) {
+      throw Exception(e.toString());
+    }
+  }
+
+  Future<void> deleteTask(TaskModel todo, String id) async {
+    try {
+// delete the document
+      await FirestoreReference.taskRef.doc(id).delete();
+      print("Task was deleted");
+      Utility.showToast('Task saved deleted');
+    } catch (e) {
+      print("Task wasn't deleted");
       throw Exception(e.toString());
     }
   }

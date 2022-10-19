@@ -1,8 +1,8 @@
 import 'package:dexter_assignment/bloc/task_bloc.dart';
 import 'package:dexter_assignment/model/imports/generalImport.dart';
-import 'package:dexter_assignment/view/uiElements/edit_todo.dart';
 
 import '../../../Repository/task_repository.dart';
+import '../../../model/task_model.dart';
 import '../../reUsableWidgets/general/screenUi.dart';
 import '../../uiElements/slideableWidget.dart';
 
@@ -40,8 +40,8 @@ class _AllTaskState extends State<AllTask> {
                         children: [
                           GeneralTextDisplay(
                               "dexter ", red!, 2, 40, FontWeight.w700, ""),
-                          GeneralTextDisplay("All TodoTask", black, 2, 28,
-                              FontWeight.w700, ""),
+                          GeneralTextDisplay(
+                              "All TodoTask", black, 2, 28, FontWeight.w700, "")
                         ],
                       ),
                     ),
@@ -57,17 +57,18 @@ class _AllTaskState extends State<AllTask> {
                                   ? state.taskList.length
                                   : 0,
                               itemBuilder: (BuildContext c, int index) {
+                                TaskModel todo = state.taskList[index];
                                 return GestureDetector(
-                                  onTap: () => editTask(context: context),
+                                  onTap: () {},
                                   child: Column(
                                     children: [
-                                      SlidableWidget(context,
+                                      SlidableWidget(context, todo,
                                           title:
                                               "${state.taskList[index].title == null ? "None" : state.taskList[index].title}",
                                           description:
                                               "${state.taskList[index].description == null ? "None" : state.taskList[index].description}",
                                           status:
-                                              "${state.taskList[index].status == null ? "None" : state.taskList[index].status}"),
+                                              "${state.taskList[index].status == null ? "None" : state.taskList[index].status}")
                                     ],
                                   ),
                                 );
