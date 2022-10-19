@@ -1,5 +1,3 @@
-// ignore: must_be_immutable
-import 'package:dexter_assignment/Repository/task_repository.dart';
 import 'package:dexter_assignment/bloc/task_bloc.dart';
 
 import '../../model/imports/generalImport.dart';
@@ -97,11 +95,11 @@ Future<void> addTaskDialog({
                     createdAt: DateTime.now(),
                     title: titleController.text,
                     description: descriptionController.text,
-                    status: 'completed',
+                    status: 'pending',
                     // deadline: DateTime.now(),
                     createdBy: 'userId')));
                 Navigator.pushReplacementNamed(context, '/homePage');
-                TaskBloc(repository: TaskRepository())..add(GetAllTasksEvent());
+                // TaskBloc(repository: TaskRepository())..add(GetAllTasksEvent());
               }),
           TextButton(
               child: Text('Cancel',
