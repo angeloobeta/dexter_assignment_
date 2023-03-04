@@ -17,6 +17,7 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
     on<AddTaskEvent>(_mapAddTaskEvent);
     on<UpdateTaskEvent>(_mapUpdateTaskEventToState);
     on<DeleteTaskEvent>(_mapDeleteTaskEventToState);
+    on<TestTaskEvent>(_mapTestTaskEventToState);
   }
 
   FutureOr<void> _mapGetAllTasksEventToState(
@@ -58,5 +59,9 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
     } catch (e) {
       emit(TaskErrorState(e.toString()));
     }
+  }
+
+  Future<void> _mapTestTaskEventToState(DeleteTaskEvent event, Emitter<TaskState> emit)async{
+    
   }
 }
